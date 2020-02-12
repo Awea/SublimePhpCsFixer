@@ -137,7 +137,7 @@ def format_file(tmp_file, settings):
     rules = settings.get('rules')
 
     cmd = [php_path] if php_path else []
-    cmd += [path, "fix", "--using-cache=off", tmp_file]
+    cmd += [path, "fix", tmp_file]
 
     if configs:
         if not type(configs) is list:
@@ -236,7 +236,7 @@ class SublimePhpCsFixCommand(sublime_plugin.TextCommand):
     def is_supported_scope(self, view):
         return 'embedding.php' in view.scope_name(view.sel()[0].begin()) and not self.is_excluded(view)
 
-    def is_excluded(self, view):        
+    def is_excluded(self, view):
         if not self.settings.has('exclude'):
             return False
 
