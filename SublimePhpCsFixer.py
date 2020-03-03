@@ -267,9 +267,12 @@ class SublimePhpCsFixListener(sublime_plugin.EventListener):
 class SublimePhpCsToggleOnSaveCommand(sublime_plugin.ApplicationCommand):
     def run(self):
         settings = load_settings()
-        settings.set('on_save', not settings.get('on_save'))
+        on_save = not settings.get('on_save')
+        on_save_s = "disabled" if on_save else "enabled"
+        settings.set('on_save', on_save)
         sublime.save_settings("SublimePhpCsFixer.sublime-settings")
-
+        status_message = "PHP-CS-Fixer on save {}".format(on_save_s)
+        sublime.active_window().status_message(status_message)
 
 class ExecutableNotFoundException(BaseException):
     pass
