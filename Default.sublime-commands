@@ -2,5 +2,9 @@
     {
         "caption": "PHP CS Fixer: format this file",
         "command": "sublime_php_cs_fix"
+    },
+    {
+        "caption": "PHP CS Fixer: toggle format on save",
+        "command": "sublime_php_cs_toggle_on_save",
     }
 ]

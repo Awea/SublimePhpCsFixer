@@ -264,5 +264,12 @@ class SublimePhpCsFixListener(sublime_plugin.EventListener):
             view.run_command('sublime_php_cs_fix')
 
 
+class SublimePhpCsToggleOnSaveCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        settings = load_settings()
+        settings.set('on_save', not settings.get('on_save'))
+        sublime.save_settings("SublimePhpCsFixer.sublime-settings")
+
+
 class ExecutableNotFoundException(BaseException):
     pass
